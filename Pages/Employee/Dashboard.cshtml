@@ -1,0 +1,146 @@
+﻿@page
+@model GiftOfTheGiversPOE.Pages.Employee.DashboardModel
+
+@{
+    ViewData["Title"] = "Employee Dashboard";
+}
+
+<div class="container py-5">
+
+    <!-- Dashboard Header -->
+
+    <div class="mb-5">
+
+        <h1>
+            Employee Dashboard
+        </h1>
+
+        <p class="lead">
+            Welcome to the Gift of the Givers
+            relief management system.
+        </p>
+
+        <p class="text-muted">
+            From this dashboard, authorised employees can
+            manage relief projects, post project updates
+            and view volunteer applications.
+        </p>
+
+    </div>
+
+
+    <!-- Dashboard Cards -->
+
+    <div class="row g-4">
+
+
+        <!-- Relief Projects -->
+
+        <div class="col-md-4">
+
+            <div class="card h-100">
+
+                <div class="card-body">
+
+                    <h2 class="card-title">
+                        Relief Projects
+                    </h2>
+
+                    <p class="card-text">
+                        View and manage ongoing relief projects,
+                        project information and current statuses.
+                    </p>
+
+                    <a href="#"
+                       class="btn btn-primary">
+
+                        View Projects
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Project Updates -->
+
+        <div class="col-md-4">
+
+            <div class="card h-100">
+
+                <div class="card-body">
+
+                    <h2 class="card-title">
+                        Project Updates
+                    </h2>
+
+                    <p class="card-text">
+                        Post updates about ongoing relief
+                        projects and keep project information
+                        current.
+                    </p>
+
+                    <a href="#"
+                       class="btn btn-primary">
+
+                        Post Update
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Volunteers -->
+
+        <div class="col-md-4">
+
+            <div class="card h-100">
+
+                <div class="card-body">
+
+                    <h2 class="card-title">
+                        Volunteer Sign-ups
+                    </h2>
+
+                    <p class="card-text">
+                        View volunteer applications,
+                        disciplines and availability.
+                    </p>
+
+                    <a href="#"
+                       class="btn btn-primary">
+
+                        View Volunteers
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Information -->
+
+    <div class="alert alert-info mt-5">
+
+        <strong>Employee Access:</strong>
+
+        This area is restricted to authorised employees.
+        Information displayed here is intended for the
+        management of the academic relief-management
+        prototype.
+
+    </div>
+
+</div>

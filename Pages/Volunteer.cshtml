@@ -1,0 +1,317 @@
+﻿@page
+
+@{
+    ViewData["Title"] = "Volunteer";
+}
+
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+
+        <h1>Volunteer</h1>
+
+        <p class="lead">
+            Register your interest in supporting disaster
+            relief efforts.
+        </p>
+
+    </div>
+
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-9">
+
+            <div class="card shadow-sm">
+
+                <div class="card-body p-4">
+
+                    <h2 class="mb-4">
+                        Volunteer Application
+                    </h2>
+
+
+                    <!-- Name -->
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                First Name
+                            </label>
+
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="Enter first name" />
+
+                        </div>
+
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Surname
+                            </label>
+
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="Enter surname" />
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Contact -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Contact Number
+                        </label>
+
+                        <input type="tel"
+                               class="form-control"
+                               placeholder="Enter contact number" />
+
+                    </div>
+
+                    <!-- Email -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Email Address
+                        </label>
+
+                        <input type="email"
+                               class="form-control"
+                               placeholder="Enter Email address" />
+
+                    </div>
+
+
+                    <!-- Address -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Address
+                        </label>
+
+                        <textarea class="form-control"
+                                  rows="3"
+                                  placeholder="Enter your address">
+                        </textarea>
+
+                    </div>
+
+
+                    <!-- Volunteer Role -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Volunteer Discipline
+                        </label>
+
+                        <select class="form-select">
+
+                            <option selected>
+                                Select a discipline
+                            </option>
+
+                            <option>
+                                Medical Personnel
+                            </option>
+
+                            <option>
+                                Search and Rescue Personnel
+                            </option>
+
+                            <option>
+                                Psycho-Social Personnel
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <!-- Skills -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Skills
+                        </label>
+
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Enter your skills" />
+
+                    </div>
+
+
+                    <!-- HPCSA -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            HPCSA Registration Number
+                        </label>
+
+                        <input type="text"
+                               class="form-control"
+                               placeholder="If applicable" />
+
+                        <div class="form-text">
+                            Required where applicable for
+                            registered healthcare professionals.
+                        </div>
+
+                    </div>
+
+
+                    <!-- Next of Kin -->
+
+                    <h3 class="mt-4 mb-3">
+                        Next of Kin
+                    </h3>
+
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Next of Kin Name
+                        </label>
+
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Enter next of kin name" />
+
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Next of Kin Contact Number
+                        </label>
+
+                        <input type="tel"
+                               class="form-control"
+                               placeholder="Enter next of kin contact number" />
+
+                    </div>
+
+
+                    <!-- Availability -->
+
+                    <h3 class="mt-4 mb-3">
+                        Availability
+                    </h3>
+
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Availability
+                        </label>
+
+                        <select class="form-select">
+
+                            <option selected>
+                                Select availability
+                            </option>
+
+                            <option>
+                                Emergency / Deployment Ready
+                            </option>
+
+                            <option>
+                                Full-Time
+                            </option>
+
+                            <option>
+                                Part-Time / Standby
+                            </option>
+
+                            <option>
+                                Specific Dates
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Location Flexibility -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Geographic Flexibility
+                        </label>
+
+                        <select class="form-select">
+
+                            <option selected>
+                                Select an option
+                            </option>
+
+                            <option>
+                                Local Area Only
+                            </option>
+
+                            <option>
+                                Within South Africa
+                            </option>
+
+                            <option>
+                                International Deployment
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Application -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Volunteer Form Submission
+                        </label>
+
+                        <textarea class="form-control"
+                                  rows="5"
+                                  placeholder="Provide any additional information about your skills, experience or availability">
+                        </textarea>
+
+                    </div>
+
+
+                    <!-- Submit -->
+
+                    <div class="d-grid mt-4">
+
+                        <button type="button"
+                                class="btn btn-primary btn-lg">
+
+                            Submit Volunteer Application
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

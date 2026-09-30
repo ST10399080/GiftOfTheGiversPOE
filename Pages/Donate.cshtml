@@ -1,0 +1,189 @@
+﻿@page
+
+@{
+    ViewData["Title"] = "Donate";
+}
+
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+
+        <h1>Make a Donation</h1>
+
+        <p class="lead">
+            Support humanitarian and disaster relief efforts.
+        </p>
+
+    </div>
+
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="card shadow-sm">
+
+                <div class="card-body p-4">
+
+                    <h2 class="mb-4">
+                        Donation Details
+                    </h2>
+
+
+                    <!-- Donation Frequency -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Donation Frequency
+                        </label>
+
+                        <select class="form-select">
+
+                            <option selected>
+                                One-time
+                            </option>
+
+                            <option>
+                                Recurring
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Amount -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Donation Amount
+                        </label>
+
+                        <input type="number"
+                               class="form-control"
+                               placeholder="Enter donation amount"
+                               min="1" />
+
+                    </div>
+
+
+                    <!-- Currency -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Currency
+                        </label>
+
+                        <select class="form-select">
+
+                            <option selected>
+                                ZAR
+                            </option>
+
+                            <option>
+                                USD
+                            </option>
+
+                            <option>
+                                EUR
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Fund Option -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Fund Option
+                        </label>
+
+                        <select class="form-select">
+
+                            <option selected>
+                                General Relief
+                            </option>
+
+                            <option>
+                                Disaster Response
+                            </option>
+
+                            <option>
+                                Hunger Relief
+                            </option>
+
+                            <option>
+                                Healthcare
+                            </option>
+
+                            <option>
+                                Water Provision
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Donor -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Donation Type
+                        </label>
+
+                        <select class="form-select">
+
+                            <option selected>
+                                Registered Donor
+                            </option>
+
+                            <option>
+                                Anonymous Donation
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Submit -->
+
+                    <div class="d-grid mt-4">
+
+                        <button type="button"
+                                class="btn btn-primary btn-lg">
+
+                            Continue with Donation
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="alert alert-info mt-5">
+
+        <strong>Academic Project:</strong>
+
+        This donation system is a prototype created for
+        educational purposes. Donation amounts and payment
+        processing are simulated.
+
+    </div>
+
+</div>

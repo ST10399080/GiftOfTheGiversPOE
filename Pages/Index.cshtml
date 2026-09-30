@@ -1,0 +1,178 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="container">
+
+    <!-- Hero Section -->
+    <section class="hero-banner">
+
+        <!-- Background Slideshow -->
+
+        <div class="hero-slideshow">
+
+            <div class="hero-slide active"
+                 style="background-image: url('/images/herobanner1.jpg');">
+            </div>
+
+            <div class="hero-slide"
+                 style="background-image: url('/images/herobanner2.jpg');">
+            </div>
+
+            <div class="hero-slide"
+                 style="background-image: url('/images/herobanner3.jpg');">
+            </div>
+
+        </div>
+
+
+        <!-- Dark overlay -->
+
+        <div class="hero-overlay"></div>
+
+
+        <!-- Content -->
+
+        <div class="hero-content container text-center">
+
+            <h1>
+                Serving Humanity
+            </h1>
+
+            <p class="lead">
+                Disaster Relief Management System
+            </p>
+
+            <p>
+                Supporting disaster relief efforts through
+                projects, volunteers, employees and donations.
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a asp-page="/Donate"
+                   class="btn btn-gold btn-lg">
+                    Donate
+                </a>
+
+                <a asp-page="/Volunteer"
+                   class="btn btn-light-outline btn-lg">
+                    Volunteer
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- What We Do -->
+    <section class="py-5">
+
+        <div class="text-center mb-5">
+
+            <h2>What We Do</h2>
+
+            <p class="text-muted">
+                The system supports several important areas of
+                disaster relief management.
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="card h-100 shadow-sm">
+
+                    <div class="card-body text-center">
+
+                        <h3 class="card-title">
+                            Disaster Response
+                        </h3>
+
+                        <p class="card-text">
+                            Support the management of relief projects
+                            responding to disasters and humanitarian
+                            emergencies.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="card h-100 shadow-sm">
+
+                    <div class="card-body text-center">
+
+                        <h3 class="card-title">
+                            Volunteers
+                        </h3>
+
+                        <p class="card-text">
+                            Volunteers can submit their information
+                            and make themselves available to assist
+                            with relief projects.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="card h-100 shadow-sm">
+
+                    <div class="card-body text-center">
+
+                        <h3 class="card-title">
+                            Donations
+                        </h3>
+
+                        <p class="card-text">
+                            Donors can contribute towards humanitarian
+                            relief projects through one-time or
+                            recurring donations.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Call To Action -->
+    <section class="py-5 text-center">
+
+        <h2>Help Make a Difference</h2>
+
+        <p class="lead">
+            Every contribution can help support people affected
+            by disasters and humanitarian crises.
+        </p>
+
+        <a asp-page="/Donate" class="btn btn-primary btn-lg">
+            Make a Donation
+        </a>
+
+    </section>
+
+</div>
