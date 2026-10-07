@@ -1,0 +1,82 @@
+﻿@page "{id:int}"
+@model GiftOfTheGiversPOE.Pages.Employee.DeleteProjectModel
+
+@{
+    ViewData["Title"] = "Delete Relief Project";
+}
+
+<div class="container py-5">
+
+    <div class="mb-4">
+
+        <h1>Delete Relief Project</h1>
+
+        <p class="text-muted">
+            Please confirm that you want to delete this project.
+        </p>
+
+    </div>
+
+
+    <div class="card shadow-sm border-danger">
+
+        <div class="card-body p-4">
+
+            <div class="alert alert-warning">
+
+                <strong>Warning:</strong>
+
+                This action will permanently remove this
+                relief project from the system.
+
+            </div>
+
+
+            <h2 class="h4">
+                @Model.Project.ProjectName
+            </h2>
+
+            <p>
+                <strong>Location:</strong>
+                @Model.Project.Location
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+                @Model.Project.Status
+            </p>
+
+            <p>
+                <strong>Description:</strong>
+                @Model.Project.Description
+            </p>
+
+
+            <form method="post">
+
+                @Html.AntiForgeryToken()
+
+                <input type="hidden"
+                       asp-for="Project.ReliefProjectID" />
+
+                <div class="d-flex gap-2 mt-4">
+
+                    <button type="submit"
+                            class="btn btn-danger">
+                        Yes, Delete Project
+                    </button>
+
+                    <a asp-page="/Employee/Projects"
+                       class="btn btn-outline-secondary">
+                        Cancel
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

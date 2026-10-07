@@ -1,0 +1,117 @@
+﻿@page
+@model GiftOfTheGiversPOE.Pages.Employee.ProjectsModel
+
+@{
+    ViewData["Title"] = "Relief Projects";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+        <h1>Relief Projects</h1>
+
+        <p class="text-muted mb-0">
+            View and manage ongoing relief projects.
+        </p>
+    </div>
+
+    <div class="d-flex gap-2">
+
+        <a asp-page="/Employee/CreateProject"
+           class="btn btn-primary">
+            Add New Project
+        </a>
+
+        <a asp-page="/Employee/Dashboard"
+           class="btn btn-outline-secondary">
+            Back to Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+
+    @if (Model.Projects.Count == 0)
+    {
+        <div class="alert alert-info">
+            No relief projects have been added yet.
+        </div>
+    }
+    else
+    {
+        <div class="row g-4">
+
+            @foreach (var project in Model.Projects)
+            {
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="card h-100 shadow-sm">
+
+                        <div class="card-body">
+
+                            <h2 class="h4 card-title">
+                                @project.ProjectName
+                            </h2>
+
+                            <p class="mb-2">
+                                <strong>Location:</strong>
+                                @project.Location
+                            </p>
+
+                            <p class="mb-2">
+                                <strong>Status:</strong>
+                                @project.Status
+                            </p>
+
+                            <p class="mb-3">
+                                @project.Description
+                            </p>
+
+                            <p class="text-muted mb-0">
+                                <strong>Start Date:</strong>
+                                @project.StartDate.ToString("dd MMMM yyyy")
+                            </p>
+
+                            @if (project.EndDate.HasValue)
+                            {
+                                <p class="text-muted">
+                                    <strong>End Date:</strong>
+                                    @project.EndDate.Value.ToString("dd MMMM yyyy")
+                                </p>
+                            }
+                            else
+                            {
+                                <p class="text-muted">
+                                    <strong>End Date:</strong>
+                                    Ongoing
+                                </p>
+                            }
+
+                            <div class="mt-4 d-flex gap-2">
+
+                               <a asp-page="/Employee/EditProject"
+                                  asp-route-id="@project.ReliefProjectID"
+                                  class="btn btn-outline-primary">
+                                   Edit Project
+                               </a>
+
+                               <a asp-page="/Employee/DeleteProject"
+                                  asp-route-id="@project.ReliefProjectID"
+                                  class="btn btn-outline-danger">
+                                   Delete Project
+                              </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    }
+
+</div>

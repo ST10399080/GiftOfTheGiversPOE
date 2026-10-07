@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using GiftOfTheGiversPOE.Models;
 
 namespace GiftOfTheGiversPOE.Data
 {
@@ -11,5 +12,7 @@ namespace GiftOfTheGiversPOE.Data
             : base(options)
         {
         }
+
+        public DbSet<ReliefProject> ReliefProjects { get; set; }
     }
 }

@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -9,13 +8,16 @@ namespace GiftOfTheGiversPOE.Areas.Identity.Pages.Account
     public class LoginModel : PageModel
     {
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<LoginModel> _logger;
 
         public LoginModel(
             SignInManager<IdentityUser> signInManager,
+            UserManager<IdentityUser> userManager,
             ILogger<LoginModel> logger)
         {
             _signInManager = signInManager;
+            _userManager = userManager;
             _logger = logger;
         }
 
@@ -24,10 +26,11 @@ namespace GiftOfTheGiversPOE.Areas.Identity.Pages.Account
 
         public string? ReturnUrl { get; set; }
 
+        public string? DebugMessage { get; set; }
+
         public class InputModel
         {
             [Required]
-            [EmailAddress]
             public string Email { get; set; } = "";
 
             [Required]
@@ -48,31 +51,73 @@ namespace GiftOfTheGiversPOE.Areas.Identity.Pages.Account
         {
             ReturnUrl = returnUrl;
 
+            DebugMessage = "POST received.";
+
+            foreach (var item in ModelState)
+            {
+                if (item.Value != null && item.Value.Errors.Count > 0)
+                {
+                    DebugMessage +=
+                        $" FIELD: {item.Key}";
+
+                    foreach (var error in item.Value.Errors)
+                    {
+                        DebugMessage +=
+                            $" ERROR: {error.ErrorMessage}";
+                    }
+                }
+            }
+
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            var result = await _signInManager.PasswordSignInAsync(
-                Input.Email,
-                Input.Password,
-                Input.RememberMe,
-                lockoutOnFailure: false
-            );
+            var user = await _userManager.FindByEmailAsync(Input.Email);
 
-            if (result.Succeeded)
+            if (user == null)
             {
-                _logger.LogInformation("User logged in successfully.");
+                DebugMessage =
+                    "USER NOT FOUND: The Employee account does not exist in the database.";
 
-                return RedirectToPage("/Index");
+                return Page();
             }
 
-            ModelState.AddModelError(
-                string.Empty,
-                "Invalid email or password."
+            DebugMessage =
+                "USER FOUND: The Employee account exists in the database.";
+
+            var passwordResult =
+                await _signInManager.CheckPasswordSignInAsync(
+                    user,
+                    Input.Password,
+                    lockoutOnFailure: false
+                );
+
+            if (!passwordResult.Succeeded)
+            {
+                DebugMessage =
+                    $"PASSWORD FAILED: " +
+                    $"Succeeded={passwordResult.Succeeded}, " +
+                    $"IsLockedOut={passwordResult.IsLockedOut}, " +
+                    $"IsNotAllowed={passwordResult.IsNotAllowed}, " +
+                    $"RequiresTwoFactor={passwordResult.RequiresTwoFactor}";
+
+                return Page();
+            }
+
+            await _signInManager.SignInAsync(
+                user,
+                Input.RememberMe
             );
 
-            return Page();
+            _logger.LogInformation(
+                "User logged in successfully."
+            );
+
+            DebugMessage =
+                "PASSWORD CORRECT: Authentication succeeded. Redirecting...";
+
+            return RedirectToPage("/Employee/Dashboard");
         }
     }
 }
