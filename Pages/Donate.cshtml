@@ -1,4 +1,5 @@
 ﻿@page
+@model GiftOfTheGiversPOE.Pages.DonateModel
 
 @{
     ViewData["Title"] = "Donate";
@@ -30,142 +31,211 @@
                     </h2>
 
 
-                    <!-- Donation Frequency -->
+                    <form method="post">
 
-                    <div class="mb-3">
+                        @Html.AntiForgeryToken()
 
-                        <label class="form-label">
-                            Donation Frequency
-                        </label>
-
-                        <select class="form-select">
-
-                            <option selected>
-                                One-time
-                            </option>
-
-                            <option>
-                                Recurring
-                            </option>
-
-                        </select>
-
-                    </div>
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
 
 
-                    <!-- Amount -->
+                        <!-- Donation Frequency -->
 
-                    <div class="mb-3">
+                        <div class="mb-3">
 
-                        <label class="form-label">
-                            Donation Amount
-                        </label>
+                            <label class="form-label">
+                                Donation Frequency
+                            </label>
 
-                        <input type="number"
-                               class="form-control"
-                               placeholder="Enter donation amount"
-                               min="1" />
+                            <select asp-for="Donation.DonationType"
+                                    class="form-select">
 
-                    </div>
+                                <option value="One-Time">
+                                    One-time
+                                </option>
 
+                                <option value="Recurring">
+                                    Recurring
+                                </option>
 
-                    <!-- Currency -->
+                            </select>
 
-                    <div class="mb-3">
-
-                        <label class="form-label">
-                            Currency
-                        </label>
-
-                        <select class="form-select">
-
-                            <option selected>
-                                ZAR
-                            </option>
-
-                            <option>
-                                USD
-                            </option>
-
-                            <option>
-                                EUR
-                            </option>
-
-                        </select>
-
-                    </div>
+                        </div>
 
 
-                    <!-- Fund Option -->
+                        <!-- Amount -->
 
-                    <div class="mb-3">
+                        <div class="mb-3">
 
-                        <label class="form-label">
-                            Fund Option
-                        </label>
+                            <label asp-for="Donation.Amount"
+                                   class="form-label">
 
-                        <select class="form-select">
+                                Donation Amount
 
-                            <option selected>
-                                General Relief
-                            </option>
+                            </label>
 
-                            <option>
-                                Disaster Response
-                            </option>
+                            <input asp-for="Donation.Amount"
+                                   type="number"
+                                   class="form-control"
+                                   placeholder="Enter donation amount"
+                                   min="1"
+                                   step="0.01" />
 
-                            <option>
-                                Hunger Relief
-                            </option>
+                            <span asp-validation-for="Donation.Amount"
+                                  class="text-danger">
+                            </span>
 
-                            <option>
-                                Healthcare
-                            </option>
-
-                            <option>
-                                Water Provision
-                            </option>
-
-                        </select>
-
-                    </div>
+                        </div>
 
 
-                    <!-- Donor -->
+                        <!-- Currency -->
 
-                    <div class="mb-3">
+                        <div class="mb-3">
 
-                        <label class="form-label">
-                            Donation Type
-                        </label>
+                            <label class="form-label">
+                                Currency
+                            </label>
 
-                        <select class="form-select">
+                            <select asp-for="Donation.Currency"
+                                    class="form-select">
 
-                            <option selected>
-                                Registered Donor
-                            </option>
+                                <option value="ZAR">
+                                    ZAR
+                                </option>
 
-                            <option>
-                                Anonymous Donation
-                            </option>
+                                <option value="USD">
+                                    USD
+                                </option>
 
-                        </select>
+                                <option value="EUR">
+                                    EUR
+                                </option>
 
-                    </div>
+                            </select>
+
+                        </div>
 
 
-                    <!-- Submit -->
+                        <!-- Fund Option -->
 
-                    <div class="d-grid mt-4">
+                        <div class="mb-3">
 
-                        <button type="button"
-                                class="btn btn-primary btn-lg">
+                            <label class="form-label">
+                                Fund Option
+                            </label>
 
-                            Continue with Donation
+                            <select asp-for="Donation.FundOption"
+                                    class="form-select">
 
-                        </button>
+                                <option value="General Relief">
+                                    General Relief
+                                </option>
 
-                    </div>
+                                <option value="Disaster Response">
+                                    Disaster Response
+                                </option>
+
+                                <option value="Hunger Relief">
+                                    Hunger Relief
+                                </option>
+
+                                <option value="Healthcare">
+                                    Healthcare
+                                </option>
+
+                                <option value="Water Provision">
+                                    Water Provision
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- Donor Type -->
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Donor Type
+                            </label>
+
+                            <select asp-for="Donation.DonorType"
+                                    class="form-select">
+
+                                <option value="Registered Donor">
+                                    Registered Donor
+                                </option>
+
+                                <option value="Anonymous">
+                                    Anonymous Donation
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- Donor Name -->
+
+                        <div class="mb-3" id="donorNameSection">
+
+                            <label asp-for="Donation.DonorName"
+                                   class="form-label">
+
+                                Donor Name
+
+                            </label>
+
+                            <input asp-for="Donation.DonorName"
+                                   class="form-control"
+                                   placeholder="Enter your name" />
+
+                            <span asp-validation-for="Donation.DonorName"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+
+                        <!-- Donor Email -->
+
+                        <div class="mb-3">
+
+                            <label asp-for="Donation.DonorEmail"
+                                   class="form-label">
+
+                                Email Address
+
+                            </label>
+
+                            <input asp-for="Donation.DonorEmail"
+                                   type="email"
+                                   class="form-control"
+                                   placeholder="Enter your email address (optional)" />
+
+                            <span asp-validation-for="Donation.DonorEmail"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+
+                        <!-- Submit -->
+
+                        <div class="d-grid mt-4">
+
+                            <button type="submit"
+                                    class="btn btn-primary btn-lg">
+
+                                Continue with Donation
+
+                            </button>
+
+                        </div>
+
+                    </form>
 
                 </div>
 
@@ -187,3 +257,47 @@
     </div>
 
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+
+        const donorType =
+            document.getElementById("Donation_DonorType");
+
+        const donorNameSection =
+            document.getElementById("donorNameSection");
+
+        const donorNameInput =
+            document.getElementById("Donation_DonorName");
+
+
+        function updateDonorFields() {
+
+            if (donorType.value === "Anonymous") {
+
+                donorNameSection.style.display = "none";
+
+                donorNameInput.value = "";
+
+            }
+            else {
+
+                donorNameSection.style.display = "block";
+
+            }
+
+        }
+
+
+        donorType.addEventListener(
+            "change",
+            updateDonorFields
+        );
+
+
+        updateDonorFields();
+
+    </script>
+}

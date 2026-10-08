@@ -19,5 +19,17 @@ namespace GiftOfTheGiversPOE.Data
 
         public DbSet<Volunteer> Volunteers { get; set; }
 
+        public DbSet<Donation> Donations { get; set; }
+
+
+        protected override void OnModelCreating(
+            ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Donation>()
+                .Property(d => d.Amount)
+                .HasPrecision(18, 2);
+        }
     }
 }

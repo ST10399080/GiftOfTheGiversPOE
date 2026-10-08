@@ -26,6 +26,13 @@ namespace GiftOfTheGiversPOE.Models
         [StringLength(20)]
         public string DonationType { get; set; } = "One-Time";
 
+        [Required]
+        [StringLength(30)]
+        public string DonorType { get; set; } = "Registered Donor";
+
+        [StringLength(50)]
+        public string FundOption { get; set; } = "General Relief";
+
         public int? ReliefProjectID { get; set; }
 
         public DateTime DonationDate { get; set; }
