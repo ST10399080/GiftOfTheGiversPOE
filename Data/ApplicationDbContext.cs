@@ -14,5 +14,10 @@ namespace GiftOfTheGiversPOE.Data
         }
 
         public DbSet<ReliefProject> ReliefProjects { get; set; }
+
+        public DbSet<ProjectUpdate> ProjectUpdates { get; set; }
+
+        public DbSet<Volunteer> Volunteers { get; set; }
+
     }
 }

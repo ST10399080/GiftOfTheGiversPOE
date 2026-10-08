@@ -1,0 +1,144 @@
+﻿@page
+@model GiftOfTheGiversPOE.Pages.Employee.VolunteersModel
+
+@{
+    ViewData["Title"] = "Volunteer Sign-ups";
+}
+
+<div class="container py-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h1>Volunteer Sign-ups</h1>
+
+            <p class="text-muted mb-0">
+                View volunteer applications and availability.
+            </p>
+            
+        </div>
+
+        <a asp-page="/Employee/Dashboard"
+           class="btn btn-outline-secondary">
+
+            Back to Dashboard
+
+        </a>
+
+    </div>
+
+
+    @if (Model.Volunteers.Count == 0)
+    {
+        <div class="alert alert-info">
+
+            No volunteer applications have been submitted yet.
+
+        </div>
+    }
+    else
+    {
+        <div class="row g-4">
+
+            @foreach (var volunteer in Model.Volunteers)
+            {
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="card h-100 shadow-sm">
+
+                        <div class="card-body">
+
+                            <h2 class="h4 card-title">
+                                @volunteer.FirstName
+                                @volunteer.Surname
+                            </h2>
+
+                            <p class="mb-2">
+                                <strong>Discipline:</strong>
+                                @volunteer.Discipline
+                            </p>
+
+                            <p class="mb-2">
+                                <strong>Email:</strong>
+                                @volunteer.Email
+                            </p>
+
+                            <p class="mb-2">
+                                <strong>Phone:</strong>
+                                @volunteer.PhoneNumber
+                            </p>
+
+                            <p class="mb-2">
+                                <strong>Address:</strong>
+                                @volunteer.Address
+                            </p>
+
+                            <p class="mb-2">
+                                <strong>Availability:</strong>
+                                @volunteer.Availability
+                            </p>
+
+                            <p class="mb-2">
+                                <strong>Geographic Flexibility:</strong>
+                                @volunteer.GeographicFlexibility
+                            </p>
+
+                            @if (!string.IsNullOrWhiteSpace(
+                                volunteer.Skills))
+                            {
+                                <p class="mb-2">
+                                    <strong>Skills:</strong>
+                                    @volunteer.Skills
+                                </p>
+                            }
+
+                            @if (!string.IsNullOrWhiteSpace(
+                                volunteer.ProfessionalRegistrationNumber))
+                            {
+                                <p class="mb-2">
+                                    <strong>Professional Registration:</strong>
+                                    @volunteer.ProfessionalRegistrationNumber
+                                </p>
+                            }
+
+                            @if (!string.IsNullOrWhiteSpace(
+                                volunteer.AdditionalInformation))
+                            {
+                                <p class="mb-2">
+                                    <strong>Additional Information:</strong>
+                                    @volunteer.AdditionalInformation
+                                </p>
+                            }
+
+                            <hr />
+
+                            <p class="mb-2">
+                                <strong>Next of Kin:</strong>
+                                @volunteer.NextOfKinName
+                            </p>
+                            
+                            <p class="mb-2">
+                                <strong>Next of Kin Phone:</strong>
+                                @volunteer.NextOfKinPhone
+                            </p>
+
+                            <p class="text-muted mb-0">
+                                <strong>Application Date:</strong>
+                                @volunteer.ApplicationDate.ToString(
+                                    "dd MMMM yyyy, HH:mm")
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    }
+
+</div>
+
+                                

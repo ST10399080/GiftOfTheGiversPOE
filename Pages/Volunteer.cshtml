@@ -1,4 +1,5 @@
 ﻿@page
+@model GiftOfTheGiversPOE.Pages.VolunteerModel
 
 @{
     ViewData["Title"] = "Volunteer";
@@ -17,7 +18,6 @@
 
     </div>
 
-
     <div class="row justify-content-center">
 
         <div class="col-lg-9">
@@ -30,281 +30,264 @@
                         Volunteer Application
                     </h2>
 
+                    <form method="post">
 
-                    <!-- Name -->
+                        @Html.AntiForgeryToken()
 
-                    <div class="row">
+                        <div class="mb-3">
 
-                        <div class="col-md-6 mb-3">
-
-                            <label class="form-label">
+                            <label asp-for="Volunteer.FirstName"
+                                   class="form-label">
                                 First Name
                             </label>
 
-                            <input type="text"
+                            <input asp-for="Volunteer.FirstName"
                                    class="form-control"
                                    placeholder="Enter first name" />
 
                         </div>
 
+                        <div class="mb-3">
 
-                        <div class="col-md-6 mb-3">
-
-                            <label class="form-label">
+                            <label asp-for="Volunteer.Surname"
+                                   class="form-label">
                                 Surname
                             </label>
 
-                            <input type="text"
+                            <input asp-for="Volunteer.Surname"
                                    class="form-control"
                                    placeholder="Enter surname" />
 
                         </div>
 
-                    </div>
+                        <div class="mb-3">
 
+                            <label asp-for="Volunteer.PhoneNumber"
+                                   class="form-label">
+                                Contact Number
+                            </label>
 
-                    <!-- Contact -->
+                            <input asp-for="Volunteer.PhoneNumber"
+                                   type="tel"
+                                   class="form-control"
+                                   placeholder="Enter contact number" />
 
-                    <div class="mb-3">
-
-                        <label class="form-label">
-                            Contact Number
-                        </label>
-
-                        <input type="tel"
-                               class="form-control"
-                               placeholder="Enter contact number" />
-
-                    </div>
-
-                    <!-- Email -->
-
-                    <div class="mb-3">
-
-                        <label class="form-label">
-                            Email Address
-                        </label>
-
-                        <input type="email"
-                               class="form-control"
-                               placeholder="Enter Email address" />
-
-                    </div>
-
-
-                    <!-- Address -->
-
-                    <div class="mb-3">
-
-                        <label class="form-label">
-                            Address
-                        </label>
-
-                        <textarea class="form-control"
-                                  rows="3"
-                                  placeholder="Enter your address">
-                        </textarea>
-
-                    </div>
-
-
-                    <!-- Volunteer Role -->
-
-                    <div class="mb-3">
-
-                        <label class="form-label">
-                            Volunteer Discipline
-                        </label>
-
-                        <select class="form-select">
-
-                            <option selected>
-                                Select a discipline
-                            </option>
-
-                            <option>
-                                Medical Personnel
-                            </option>
-
-                            <option>
-                                Search and Rescue Personnel
-                            </option>
-
-                            <option>
-                                Psycho-Social Personnel
-                            </option>
-
-                        </select>
-
-                    </div>
-
-                    <!-- Skills -->
-
-                    <div class="mb-3">
-
-                        <label class="form-label">
-                            Skills
-                        </label>
-
-                        <input type="text"
-                               class="form-control"
-                               placeholder="Enter your skills" />
-
-                    </div>
-
-
-                    <!-- HPCSA -->
-
-                    <div class="mb-3">
-
-                        <label class="form-label">
-                            HPCSA Registration Number
-                        </label>
-
-                        <input type="text"
-                               class="form-control"
-                               placeholder="If applicable" />
-
-                        <div class="form-text">
-                            Required where applicable for
-                            registered healthcare professionals.
                         </div>
 
-                    </div>
+                        <div class="mb-3">
 
+                            <label asp-for="Volunteer.Email"
+                                   class="form-label">
+                                Email Address
+                            </label>
 
-                    <!-- Next of Kin -->
+                            <input asp-for="Volunteer.Email"
+                                   type="email"
+                                   class="form-control"
+                                   placeholder="Enter Email address" />
 
-                    <h3 class="mt-4 mb-3">
-                        Next of Kin
-                    </h3>
+                        </div>
 
+                        <div class="mb-3">
 
-                    <div class="mb-3">
+                            <label asp-for="Volunteer.Address"
+                                   class="form-label">
+                                Address
+                            </label>
 
-                        <label class="form-label">
-                            Next of Kin Name
-                        </label>
+                            <textarea asp-for="Volunteer.Address"
+                                      class="form-control"
+                                      rows="3"
+                                      placeholder="Enter your address"></textarea>
 
-                        <input type="text"
-                               class="form-control"
-                               placeholder="Enter next of kin name" />
+                        </div>
 
-                    </div>
+                        <div class="mb-3">
 
+                            <label asp-for="Volunteer.Discipline"
+                                   class="form-label">
+                                Volunteer Discipline
+                            </label>
 
-                    <div class="mb-3">
+                            <select asp-for="Volunteer.Discipline"
+                                    class="form-select">
 
-                        <label class="form-label">
-                            Next of Kin Contact Number
-                        </label>
+                                <option value="">
+                                    Select a discipline
+                                </option>
 
-                        <input type="tel"
-                               class="form-control"
-                               placeholder="Enter next of kin contact number" />
+                                <option value="Medical Personnel">
+                                    Medical Personnel
+                                </option>
 
-                    </div>
+                                <option value="Search and Rescue Personnel">
+                                    Search and Rescue Personnel
+                                </option>
 
+                                <option value="Psycho-Social Personnel">
+                                    Psycho-Social Personnel
+                                </option>
 
-                    <!-- Availability -->
+                            </select>
 
-                    <h3 class="mt-4 mb-3">
-                        Availability
-                    </h3>
+                        </div>
 
+                        <div class="mb-3">
 
-                    <div class="mb-3">
+                            <label asp-for="Volunteer.Skills"
+                                   class="form-label">
+                                Skills
+                            </label>
 
-                        <label class="form-label">
+                            <input asp-for="Volunteer.Skills"
+                                   class="form-control"
+                                   placeholder="Enter your skills" />
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label asp-for="Volunteer.ProfessionalRegistrationNumber"
+                                   class="form-label">
+                                HPCSA Registration Number
+                            </label>
+
+                            <input asp-for="Volunteer.ProfessionalRegistrationNumber"
+                                   class="form-control"
+                                   placeholder="If applicable" />
+
+                            <div class="form-text">
+                                Required where applicable for
+                                registered healthcare professionals.
+                            </div>
+
+                        </div>
+
+                        <h3 class="mt-4 mb-3">
+                            Next of Kin
+                        </h3>
+
+                        <div class="mb-3">
+
+                            <label asp-for="Volunteer.NextOfKinName"
+                                   class="form-label">
+                                Next of Kin Name
+                            </label>
+
+                            <input asp-for="Volunteer.NextOfKinName"
+                                   class="form-control"
+                                   placeholder="Enter next of kin name" />
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label asp-for="Volunteer.NextOfKinPhone"
+                                   class="form-label">
+                                Next of Kin Contact Number
+                            </label>
+
+                            <input asp-for="Volunteer.NextOfKinPhone"
+                                   type="tel"
+                                   class="form-control"
+                                   placeholder="Enter next of kin contact number" />
+
+                        </div>
+
+                        <h3 class="mt-4 mb-3">
                             Availability
-                        </label>
+                        </h3>
 
-                        <select class="form-select">
+                        <div class="mb-3">
 
-                            <option selected>
-                                Select availability
-                            </option>
+                            <label asp-for="Volunteer.Availability"
+                                   class="form-label">
+                                Availability
+                            </label>
 
-                            <option>
-                                Emergency / Deployment Ready
-                            </option>
+                            <select asp-for="Volunteer.Availability"
+                                    class="form-select">
 
-                            <option>
-                                Full-Time
-                            </option>
+                                <option value="">
+                                    Select availability
+                                </option>
 
-                            <option>
-                                Part-Time / Standby
-                            </option>
+                                <option value="Emergency / Deployment Ready">
+                                    Emergency / Deployment Ready
+                                </option>
 
-                            <option>
-                                Specific Dates
-                            </option>
+                                <option value="Full-Time">
+                                    Full-Time
+                                </option>
 
-                        </select>
+                                <option value="Part-Time / Standby">
+                                    Part-Time / Standby
+                                </option>
 
-                    </div>
+                                <option value="Specific Dates">
+                                    Specific Dates
+                                </option>
 
+                            </select>
 
-                    <!-- Location Flexibility -->
+                        </div>
 
-                    <div class="mb-3">
+                        <div class="mb-3">
 
-                        <label class="form-label">
-                            Geographic Flexibility
-                        </label>
+                            <label asp-for="Volunteer.GeographicFlexibility"
+                                   class="form-label">
+                                Geographic Flexibility
+                            </label>
 
-                        <select class="form-select">
+                            <select asp-for="Volunteer.GeographicFlexibility"
+                                    class="form-select">
 
-                            <option selected>
-                                Select an option
-                            </option>
+                                <option value="">
+                                    Select an option
+                                </option>
 
-                            <option>
-                                Local Area Only
-                            </option>
+                                <option value="Local Area Only">
+                                    Local Area Only
+                                </option>
 
-                            <option>
-                                Within South Africa
-                            </option>
+                                <option value="Within South Africa">
+                                    Within South Africa
+                                </option>
 
-                            <option>
-                                International Deployment
-                            </option>
+                                <option value="International Deployment">
+                                    International Deployment
+                                </option>
 
-                        </select>
+                            </select>
 
-                    </div>
+                        </div>
 
+                        <div class="mb-3">
 
-                    <!-- Application -->
+                            <label asp-for="Volunteer.AdditionalInformation"
+                                   class="form-label">
+                                Volunteer Form Submission
+                            </label>
 
-                    <div class="mb-3">
+                            <textarea asp-for="Volunteer.AdditionalInformation"
+                                      class="form-control"
+                                      rows="5"
+                                      placeholder="Provide any additional information about your skills, experience or availability"></textarea>
 
-                        <label class="form-label">
-                            Volunteer Form Submission
-                        </label>
+                        </div>
 
-                        <textarea class="form-control"
-                                  rows="5"
-                                  placeholder="Provide any additional information about your skills, experience or availability">
-                        </textarea>
+                        <div class="d-grid mt-4">
 
-                    </div>
+                            <button type="submit"
+                                    class="btn btn-primary btn-lg">
 
+                                Submit Volunteer Application
 
-                    <!-- Submit -->
+                            </button>
 
-                    <div class="d-grid mt-4">
+                        </div>
 
-                        <button type="button"
-                                class="btn btn-primary btn-lg">
-
-                            Submit Volunteer Application
-
-                        </button>
-
-                    </div>
+                    </form>
 
                 </div>
 
@@ -315,3 +298,7 @@
     </div>
 
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

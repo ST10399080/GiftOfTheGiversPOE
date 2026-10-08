@@ -90,6 +90,12 @@
 
                             <div class="mt-4 d-flex gap-2">
 
+                                <a asp-page="/Employee/ProjectUpdates"
+                                   asp-route-id="@project.ReliefProjectID"
+                                   class="btn btn-primary">
+                                    View Updates
+                               </a>
+
                                <a asp-page="/Employee/EditProject"
                                   asp-route-id="@project.ReliefProjectID"
                                   class="btn btn-outline-primary">
@@ -113,5 +119,3 @@
 
         </div>
     }
-
-</div>
