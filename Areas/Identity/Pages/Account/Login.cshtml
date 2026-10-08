@@ -5,109 +5,240 @@
     ViewData["Title"] = "Log in";
 }
 
-<div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6 col-lg-5">
+<style>
+    .login-page {
+        min-height: 75vh !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 4rem 1rem !important;
+    }
 
-            <div class="card shadow-sm">
-                <div class="card-body p-4">
+    .login-card {
+        width: 100% !important;
+        max-width: 520px !important;
+        margin: 0 auto !important;
+        background: #FFFFFF !important;
+        border: none !important;
+        border-radius: 20px !important;
+        overflow: hidden !important;
+        box-shadow: 0 20px 50px rgba(11, 61, 46, 0.20) !important;
+    }
 
-                    <div class="text-center mb-4">
-                        <h1>Log in</h1>
+    .login-header {
+        background: linear-gradient(135deg, #0B3D2E 0%, #1F6B4F 100%) !important;
+        padding: 3.5rem 2rem !important;
+        text-align: center !important;
+        border-bottom: 6px solid #D4AF37 !important;
+    }
 
-                        <p class="text-muted">
-                            Sign in to your Gift of the Givers account.
-                        </p>
-                    </div>
+        .login-header h1 {
+            color: #FFFFFF !important;
+            font-size: 2.6rem !important;
+            font-weight: 700 !important;
+            margin: 0 0 0.75rem 0 !important;
+        }
 
-                    <form method="post">
+        .login-header p {
+            color: #FFFFFF !important;
+            opacity: 0.9 !important;
+            margin: 0 !important;
+            font-size: 1rem !important;
+        }
 
-                        @Html.AntiForgeryToken()
+    .login-body {
+        background: #FFFFFF !important;
+        padding: 3rem !important;
+    }
 
-                        <div asp-validation-summary="All"
-                             class="text-danger mb-3">
-                        </div>
+    .login-introduction {
+        text-align: center !important;
+        margin-bottom: 2rem !important;
+    }
 
-                        @if (!string.IsNullOrEmpty(Model.DebugMessage))
-                        {
-                            <div class="alert alert-info mb-3">
-                                @Model.DebugMessage
-                            </div>
-                        }
+        .login-introduction p {
+            color: #66736C !important;
+            margin: 0 !important;
+        }
 
-                        <div class="mb-3">
+    .login-body .form-label {
+        display: block !important;
+        color: #0B3D2E !important;
+        font-weight: 700 !important;
+        margin-bottom: 0.6rem !important;
+    }
 
-                            <label asp-for="Input.Email"
-                                   class="form-label">
-                                Email
-                            </label>
+    .login-body .form-control {
+        display: block !important;
+        width: 100% !important;
+        min-height: 52px !important;
+        padding: 0.75rem 1rem !important;
+        background: #FFFFFF !important;
+        color: #17221D !important;
+        border: 2px solid #DCE6E0 !important;
+        border-radius: 9px !important;
+        box-shadow: none !important;
+    }
 
-                            <input type="text"
-                                   name="Input.Email"
-                                   id="Input_Email"
-                                   class="form-control"
-                                   autocomplete="username" />
+        .login-body .form-control:focus {
+            border-color: #D4AF37 !important;
+            outline: none !important;
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15) !important;
+        }
 
-                            <span asp-validation-for="Input.Email"
-                                  class="text-danger">
-                            </span>
+    .login-submit {
+        width: 100% !important;
+        min-height: 54px !important;
+        margin-top: 0.5rem !important;
+        background: linear-gradient(135deg, #0B3D2E, #145A42) !important;
+        border: none !important;
+        border-radius: 9px !important;
+        color: #FFFFFF !important;
+        font-size: 1.05rem !important;
+        font-weight: 700 !important;
+    }
 
-                        </div>
+        .login-submit:hover {
+            background: #1F6B4F !important;
+            color: #FFFFFF !important;
+        }
 
-                        <div class="mb-3">
+    .login-body .text-danger {
+        color: #B42318 !important;
+    }
 
-                            <label asp-for="Input.Password"
-                                   class="form-label">
-                                Password
-                            </label>
+    @@media (max-width: 767px) {
 
-                            <input type="password"
-                                   name="Input.Password"
-                                   id="Input_Password"
-                                   class="form-control"
-                                   autocomplete="current-password" />
+        .login-page {
+            padding: 2rem 0.75rem !important;
+        }
 
-                            <span asp-validation-for="Input.Password"
-                                  class="text-danger">
-                            </span>
+        .login-header {
+            padding: 2.5rem 1.5rem !important;
+        }
 
-                        </div>
+            .login-header h1 {
+                font-size: 2.1rem !important;
+            }
 
-                        <div class="form-check mb-4">
+        .login-body {
+            padding: 2rem 1.5rem !important;
+        }
+    }
+</style>
 
-                            <input asp-for="Input.RememberMe"
-                                   class="form-check-input" />
+<div class="login-page">
 
-                            <label asp-for="Input.RememberMe"
-                                   class="form-check-label">
-                                Remember me
-                            </label>
+    <div class="login-card">
 
-                        </div>
+        <!-- Login Header -->
 
-                        <button type="submit"
-                                class="btn btn-primary w-100">
-                            Log in
-                        </button>
+        <div class="login-header">
 
-                    </form>
+            <h1>
+                Welcome Back
+            </h1>
 
-                    <div class="text-center mt-4">
-
-                        <p>
-                            Don't have an account?
-                            <a asp-page="./Register">
-                                Register
-                            </a>
-                        </p>
-
-                    </div>
-
-                </div>
-            </div>
+            <p>
+                Sign in to your Gift of the Givers account
+            </p>
 
         </div>
+
+        <!-- Login Form -->
+
+        <div class="login-body">
+
+            <div class="login-introduction">
+
+                <p>
+                    Enter your details below to continue.
+                </p>
+
+            </div>
+
+            <form method="post">
+
+                @Html.AntiForgeryToken()
+
+                <div asp-validation-summary="All"
+                     class="text-danger mb-4">
+                </div>
+
+                @if (!string.IsNullOrEmpty(Model.DebugMessage))
+                {
+                    <div class="alert alert-info mb-4">
+                        @Model.DebugMessage
+                    </div>
+                }
+
+                <!-- Email -->
+
+                <div class="mb-4">
+
+                    <label asp-for="Input.Email"
+                           class="form-label">
+
+                        Email Address
+
+                    </label>
+
+                    <input type="text"
+                           name="Input.Email"
+                           id="Input_Email"
+                           class="form-control"
+                           autocomplete="username"
+                           placeholder="Enter your email address" />
+
+                    <span asp-validation-for="Input.Email"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+                <!-- Password -->
+
+                <div class="mb-4">
+
+                    <label asp-for="Input.Password"
+                           class="form-label">
+
+                        Password
+
+                    </label>
+
+                    <input type="password"
+                           name="Input.Password"
+                           id="Input_Password"
+                           class="form-control"
+                           autocomplete="current-password"
+                           placeholder="Enter your password" />
+
+                    <span asp-validation-for="Input.Password"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+                <!-- Login Button -->
+
+                <div class="d-grid">
+
+                    <button type="submit"
+                            class="btn btn-primary btn-lg login-submit">
+
+                        Log in
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
     </div>
+
 </div>
 
 @section Scripts {
